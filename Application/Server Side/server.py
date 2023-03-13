@@ -122,7 +122,9 @@ def decrypt_content(file_content, decrypt_key):
     Decrypt and return the content
     """
     try:
+        # Create Fernet object with key
         cipher = Fernet(decrypt_key)
+        # Encrypt file content
         plaintext = cipher.decrypt(
             file_content.encode('utf-8')).decode('utf-8')
         return plaintext
