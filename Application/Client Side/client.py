@@ -100,7 +100,7 @@ def main():
     try:
         while True:
             item_type = input(
-                "Enter '1' to send a dictionary or '2' to send a file: ")
+                "Enter '1' to send a dictionary or '2' to create and send a file: ")
             if item_type == '1':
                 my_dict = {}
                 while True:

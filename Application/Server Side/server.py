@@ -147,10 +147,10 @@ def main():
                 dictionary = receive_dictionary(
                     serialization_format, HOST, PORT)
                 # call print function if yes
-                print_to_screen = input("Print to screen? (y/n): ")
+                print_to_screen = input("Received the message, print to screen? (y/n): ")
                 print_contents(dictionary, print_to_screen)
                 # call save function if yes
-                print_to_file = input("Print to file? (y/n): ")
+                print_to_file = input("Print and save to file? (y/n): ")
                 save_files(dictionary, serialization_format, print_to_file)
             elif item_type == '2':
                 receive_file(HOST, PORT)
