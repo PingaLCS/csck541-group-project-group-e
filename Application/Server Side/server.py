@@ -106,7 +106,7 @@ def receive_file(host, port):
                 decrypt = input("Decrypt file content? (y/n): ")
                 with open(os.path.join(sys.path[0], filename), 'w') as f:
                     if decrypt == 'y':
-                        decrypt_key = input("Enter decrypt key (MUST be 32 characters): ")
+                        decrypt_key = input("Enter decrypt key (MUST be 32 url-safe base64-encoded bytes): ")
                         file_content = decrypt_content(
                             file_content, decrypt_key)
                     f.write(file_content)

@@ -79,7 +79,7 @@ def create_file():
         file_content = input("Enter file content: ")
         encrypt = input("Encrypt file content? (y/n): ")
         if encrypt == 'y':
-            encrypt_key = input("Enter encrypt key (MUST be 32 characters): ")
+            encrypt_key = input("Enter encrypt key (MUST be 32 url-safe base64-encoded bytes): ")
             # Create Fernet object with key
             cipher_suite = Fernet(encrypt_key)
             # Encrypt file content
