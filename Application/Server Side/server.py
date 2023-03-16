@@ -17,6 +17,7 @@ from cryptography.fernet import Fernet
 # Set the local host and port
 HOST = 'localhost'
 PORT = 5000
+# key = "NoPNbKq2NPZI4iFIhFs9uSXVAvBkQEGYZvGB_LmNgbA="
 
 
 def deserialize_dict(serialization_format, serialized_dict):
@@ -106,7 +107,7 @@ def receive_file(host, port):
                 decrypt = input("Decrypt file content? (y/n): ")
                 with open(os.path.join(sys.path[0], filename), 'w') as f:
                     if decrypt == 'y':
-                        decrypt_key = input("Enter decrypt key: ")
+                        decrypt_key = input("Enter decrypt key (MUST be 32 url-safe base64-encoded bytes): ")
                         file_content = decrypt_content(
                             file_content, decrypt_key)
                     f.write(file_content)
@@ -147,10 +148,10 @@ def main():
                 dictionary = receive_dictionary(
                     serialization_format, HOST, PORT)
                 # call print function if yes
-                print_to_screen = input("Print to screen? (y/n): ")
+                print_to_screen = input("Received the message, print to screen? (y/n): ")
                 print_contents(dictionary, print_to_screen)
                 # call save function if yes
-                print_to_file = input("Print to file? (y/n): ")
+                print_to_file = input("Print and save to file? (y/n): ")
                 save_files(dictionary, serialization_format, print_to_file)
             elif item_type == '2':
                 receive_file(HOST, PORT)
