@@ -15,6 +15,7 @@ Build a simple client/server network, including functions and features here.
   4.  Write unit tests for each function.
   5.  Include a directory tree.
   6.  Include a Readme.md and dependencies.txt / requirements.txt.
+
 Client side's functions:
   1.  Create a dictionary, populate it, serialize it and send it to the server.
         -  Create and send a dictionary to the server side.
@@ -23,6 +24,7 @@ Client side's functions:
         -  Create and save the text file to the client side.
         -  Send the content of the file to the server side.
         -  Support users to have the option to encrypt the text in a text file.
+
 Server Side's functions:
   1.  Open a listener to receive the dictionary sent from the client side.
         -  Deserialize the dictionary.
@@ -35,6 +37,7 @@ Server Side's functions:
 Before run the program: 
   1.  Base on the file `requirements.txt` to ensure you install the related package.
   2.  Prepare TWO virtual environments to run the python program, `client.py` and `server.py`.
+
 Main function 1 - Create a dictionary and send it to the server side:
   1.  [Server-side] Run the server-side virtual environment and locate the file `server.py` path.
   2.  [Server-side] Type `python server.py` to run the program.
@@ -53,6 +56,7 @@ Main function 1 - Create a dictionary and send it to the server side:
   15. [Server-side] Ask you to enter the file name, for example, `dictionary_json.txt`.
   16. [Server-side] Show `File 'dictionary_json.txt' is saved in the folder of 'Server Side'`.
   17. The file will save in the same path as the file `server.py`.
+
 Main function 2 - Create a text file and send it to the server:
   1.  [Server-side] Enter `2` to receive the content of file.
   2.  [Server-side] Show `Server is listening...............` on the screen.
