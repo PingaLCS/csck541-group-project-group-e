@@ -17,6 +17,7 @@ from cryptography.fernet import Fernet
 # Set the local host and port
 HOST = 'localhost'
 PORT = 5000
+# key = "NoPNbKq2NPZI4iFIhFs9uSXVAvBkQEGYZvGB_LmNgbA="
 
 
 def deserialize_dict(serialization_format, serialized_dict):

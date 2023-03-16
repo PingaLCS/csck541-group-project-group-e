@@ -18,6 +18,7 @@ from cryptography.fernet import Fernet
 # Set the local host and port
 HOST = 'localhost'
 PORT = 5000
+# key = "NoPNbKq2NPZI4iFIhFs9uSXVAvBkQEGYZvGB_LmNgbA="
 
 
 def serialize_dict(serialization_format, dictionary):
@@ -115,6 +116,7 @@ def main():
             elif item_type == '2':
                 my_file = create_file()
                 send_file(my_file, HOST, PORT)
+                print("File is created and sent to server.")
             else:
                 print("Invalid input. Please enter '1' or '2'.")
     except Exception as e:

@@ -1,0 +1,13 @@
+../csck541-group-project-group-e/
+├── Application/
+│   ├── Client Side/
+│   │   └── client.py
+│   └── Server Side/
+│       └── server.py
+├── .gitignore
+├── directory.txt
+├── LICENSE
+├── README.md
+└── requirements.txt
+
+2 directory, 7 files
