@@ -1,16 +1,10 @@
 import unittest
 import Client_Side.client
 import Server_Side.server
-import socket
-import pickle
-import json
-import xml.etree.ElementTree as ET
+import os
+import sys
+import io
 from unittest.mock import patch
-from io import StringIO
-# Now, let's create a test class that inherits from unittest.TestCase:
-
-# class TestClientServer(unittest.TestCase):
-# Next, let's create test methods for each function you want to test. Here's an example of testing the deserialize_dict function:
 
 
 class TestClientServer(unittest.TestCase):
@@ -51,6 +45,56 @@ class TestClientServer(unittest.TestCase):
         deserialized_data = Server_Side.server.deserialize_dict(
             'XML', serialized_data)
         self.assertEqual(data, deserialized_data)
+
+    @patch('builtins.input', side_effect=['client_test.txt', 'test content', 'y', 'NoPNbKq2NPZI4iFIhFs9uSXVAvBkQEGYZvGB_LmNgbA='])
+    def test_client_create_file(self, mock_input):
+        """
+        Test the function create_file() of client.py.
+        The test include encrypt function.
+        """
+        Client_Side.client.create_file()
+        # Check that file was created
+        self.assertTrue(os.path.isfile(
+            os.path.join(sys.path[0], 'client_test.txt')))
+
+    def test_server_print_contents(self):
+        """
+        Test the function print_contents() of server.py.
+        """
+        dict = {'key': 'value'}
+        print_to_screen = 'y'
+        # capture the output
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        Server_Side.server.print_contents(dict, print_to_screen)
+        sys.stdout = sys.__stdout__
+        # check whether the print value has the vlaue of dict
+        self.assertIn(str(dict), captured_output.getvalue())
+
+    @patch('builtins.input', side_effect=['server_test.txt'])
+    def test_server_save_file(self, mock_input):
+        """
+        Test the function save_files() of server.py.
+        """
+        dict = {'key': 'value'}
+        print_to_file = 'y'
+        Server_Side.server.save_files(dict, print_to_file)
+        # Check that file was created
+        self.assertTrue(os.path.isfile(
+            os.path.join(sys.path[0], 'server_test.txt')))
+
+    def test_server_decrypt_content(self):
+        """
+        Test the function decrypt_content() of server.py.
+        """
+        # read the content of file "client_test.txt"
+        with open(os.path.join(sys.path[0], "client_test.txt"), "r") as file:
+            content = file.read()
+        decrypt_key = 'NoPNbKq2NPZI4iFIhFs9uSXVAvBkQEGYZvGB_LmNgbA='
+        expected_result = 'test content'
+        result = Server_Side.server.decrypt_content(content, decrypt_key)
+        # check the content between expected result and result
+        self.assertEqual(expected_result, result)
 
 
 if __name__ == '__main__':

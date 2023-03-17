@@ -50,7 +50,7 @@ def print_contents(dict, print_to_screen):
         print(f'Received dictionary: {dict}')
 
 
-def save_files(dict, serialization_format, print_to_file):
+def save_files(dict, print_to_file):
     """
     Print the content to txt file and save it
     File will save in the same path of server.py
@@ -152,7 +152,7 @@ def main():
                 print_contents(dictionary, print_to_screen)
                 # call save function if yes
                 print_to_file = input("Print and save to file? (y/n): ")
-                save_files(dictionary, serialization_format, print_to_file)
+                save_files(dictionary, print_to_file)
             elif item_type == '2':
                 receive_file(HOST, PORT)
                 print("File received and decrypted.")
