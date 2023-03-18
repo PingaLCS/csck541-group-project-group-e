@@ -18,6 +18,7 @@ from cryptography.fernet import Fernet
 # Set the local host and port
 HOST = 'localhost'
 PORT = 5000
+# key = "NoPNbKq2NPZI4iFIhFs9uSXVAvBkQEGYZvGB_LmNgbA="
 
 
 def serialize_dict(serialization_format, dictionary):
@@ -41,7 +42,6 @@ def serialize_dict(serialization_format, dictionary):
             raise ValueError(f"Unsupported serialization format {serialization_format}")
     except Exception as e:
         print(f"An error occurred when serialize dictionary: {e}")
-
 
 
 def send_dictionary(dictionary, serialization_format, host, port):
@@ -82,7 +82,7 @@ def create_file():
         file_content = input("Enter file content: ")
         encrypt = input("Encrypt file content? (y/n): ")
         if encrypt == 'y':
-            encrypt_key = input("Enter encrypt key: ")
+            encrypt_key = input("Enter encrypt key (MUST be 32 url-safe base64-encoded bytes): ")
             # Create Fernet object with key
             cipher_suite = Fernet(encrypt_key)
             # Encrypt file content
@@ -103,7 +103,7 @@ def main():
     try:
         while True:
             item_type = input(
-                "Enter '1' to send a dictionary or '2' to send a file: ")
+                "Enter '1' to send a dictionary or '2' to create and send a file: ")
             if item_type == '1':
                 my_dict = {}
                 while True:
@@ -118,6 +118,7 @@ def main():
             elif item_type == '2':
                 my_file = create_file()
                 send_file(my_file, HOST, PORT)
+                print("File is created and sent to server.")
             else:
                 print("Invalid input. Please enter '1' or '2'.")
     except Exception as e:
