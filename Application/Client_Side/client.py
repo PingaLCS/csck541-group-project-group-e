@@ -38,6 +38,8 @@ def serialize_dict(serialization_format, dictionary):
                 element = ET.SubElement(root, key)
                 element.text = str(value)
             return ET.tostring(root)
+        else:
+            raise ValueError(f"Unsupported serialization format {serialization_format}")
     except Exception as e:
         print(f"An error occurred when serialize dictionary: {e}")
 
